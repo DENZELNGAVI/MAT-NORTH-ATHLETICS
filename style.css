@@ -1,0 +1,148 @@
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header */
+header {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+  color: #f0f7ff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+header p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #c0d6ff;
+}
+
+/* Search Bar */
+.search-bar {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.1rem;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease;
+  background: #f0f7ff;
+  color: #1e3c72;
+  font-weight: 600;
+}
+
+#searchInput::placeholder {
+  color: #7191c8;
+  font-style: italic;
+}
+
+#searchInput:focus {
+  box-shadow: 0 0 12px #77aaff;
+}
+
+/* Athlete container */
+#athleteContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  padding: 0 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Athlete Cards */
+.athlete-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.athlete-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.athlete-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #e2e8ff;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.athlete-card ul {
+  list-style: none;
+}
+
+.athlete-card ul li {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  color: #dce6ff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.3rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  color: #aab8ff;
+  letter-spacing: 0.05em;
+  box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.1);
+  user-select: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .athlete-card {
+    padding: 1.2rem 1.3rem;
+  }
+
+  .athlete-card h3 {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mat North Zimbabwe Athletics</title>
+
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Header */
+    header {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      color: #f0f7ff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #c0d6ff;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 30px;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s ease;
+      background: #f0f7ff;
+      color: #1e3c72;
+      font-weight: 600;
+    }
+
+    #searchInput::placeholder {
+      color: #7191c8;
+      font-style: italic;
+    }
+
+    #searchInput:focus {
+      box-shadow: 0 0 12px #77aaff;
+    }
+
+    /* Athlete container */
+    #athleteContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      padding: 0 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Athlete Cards */
+    .athlete-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .athlete-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .athlete-name {
+      cursor: pointer;
+      position: relative;
+      padding-right: 20px;
+      user-select: none;
+      transition: color 0.3s ease;
+      font-size: 1.8rem;
+      color: #e2e8ff;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .athlete-name::after {
+      content: '▶'; /* right-pointing arrow */
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      color: #aac8ff;
+      transition: transform 0.3s ease;
+    }
+
+    .athlete-name.expanded::after {
+      transform: translateY(-50%) rotate(90deg);
+      color: #fff;
+    }
+
+    .athlete-times {
+      margin-top: 0.8rem;
+      color: #dce6ff;
+      font-weight: 600;
+      list-style: none;
+      padding-left: 0;
+      display: none;
+    }
+
+    .athlete-times li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.3rem 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      font-size: 0.9rem;
+      color: #aab8ff;
+      letter-spacing: 0.05em;
+      box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.1);
+      user-select: none;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .athlete-card {
+        padding: 1.2rem 1.3rem;
+      }
+
+      .athlete-name {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mat North Zimbabwe Athletics</h1>
+    <p>Track and Field Records</p>
+  </header>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search athlete name..."
+      oninput="filterAthletes()"
+    />
+  </div>
+
+  <div id="athleteContainer">
+
+    <div class="athlete-card" data-athlete="Only Jabulani Dube">
+      <h3 class="athlete-name">Only Jabulani Dube</h3>
+      <ul class="athlete-times">
+        <li>100m - 10.21 (2022)</li>
+        <li>200m - 20.45 (2023)</li>
+      </ul>
+    </div>
+
+    <div class="athlete-card" data-athlete="Mike Dube">
+      <h3 class="athlete-name">Daniel Ngavi</h3>
+      <ul class="athlete-times">
+        <li>100m - 10.34 (2021)</li>
+        <li>200m - 20.78 (2023)</li>
+      </ul>
+    </div>
+
+    <div class="athlete-card" data-athlete="Jane Moyo">
+      <h3 class="athlete-name">Denzel Ngavi</h3>
+      <ul class="athlete-times">
+        <li>100m - 11.34 (2023)</li>
+        <li>200m - 23.10 (2022)</li>
+      </ul>
+    </div>
+
+    <div class="athlete-card" data-athlete="Faith Tshuma">
+      <h3 class="athlete-name">Maxwell Ndlovu</h3>
+      <ul class="athlete-times">
+        <li>100m - 11.50 (2021)</li>
+        <li>200m - 22.79 (2022)</li>
+      </ul>
+    </div>
+
+    <div class="athlete-card" data-athlete="Denzel Makwati">
+      <h3 class="athlete-name">Denzel Makwati</h3>
+      <ul class="athlete-times">
+        <li>200m - 22.00 (E.T)</li>
+        <li>200m - 21.84 (H.T)</li>
+      </ul>
+    </div>
+
+    <div class="athlete-card" data-athlete="Prosper Kutadzaushe">
+      <h3 class="athlete-name">Prosper Kutadzaushe</h3>
+      <ul class="athlete-times">
+        <li>200m - 22.88 (H.T)</li>
+      </ul>
+    </div>
+
+     <div class="athlete-card" data-athlete="Prosper Kutadzaushe">
+      <h3 class="athlete-name">Princess Ngwenya</h3>
+      <ul class="athlete-times">
+        <li>200m - 22.88 (H.T)</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Mat North Zimbabwe Athletics. All rights reserved.
+  </footer>
+
+  <script>
+    // Filter athletes by name
+    function filterAthletes() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.athlete-card');
+      cards.forEach(card => {
+        const name = card.getAttribute('data-athlete').toLowerCase();
+        if (name.includes(input)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Toggle times on click
+    document.querySelectorAll('.athlete-name').forEach(nameEl => {
+      nameEl.addEventListener('click', () => {
+        const timesEl = nameEl.nextElementSibling;
+        const isVisible = timesEl.style.display === 'block';
+
+        // Toggle visibility
+        timesEl.style.display = isVisible ? 'none' : 'block';
+
+        // Toggle arrow rotation
+        if (isVisible) {
+          nameEl.classList.remove('expanded');
+        } else {
+          nameEl.classList.add('expanded');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
